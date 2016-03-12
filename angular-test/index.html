@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Angular Material S3 Portal</title>
+    
+    
+    
+    
+        <link rel="stylesheet" href="css/style.css">
+
+    
+    
+    
+  </head>
+
+  <body>
+
+    <html>
+<head>
+  <!-- Angular Material requires Angular.js Libraries -->
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+  <!--<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>-->
+  
+  <!-- Angular Material Library -->
+  <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+  <!-- Angular Material style sheet -->
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+  <script src="js/d3.js"></script>
+    <script src="js/nv.d3.js"></script>
+    <script src="js/angularjs-nvd3-directives.js"></script>
+    <link rel="stylesheet" href="stylesheets/nv.d3.css"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+</head>
+<body class="default" ng-app="BlankApp" ng-cloak>
+    <div layout="column" ng-controller="AppCtrl">
+        <header layout="column">
+            <md-toolbar id="head-bar">
+                <div class="md-toolbar-tools">
+                    <h1 class="md-title">
+                        <span>Graph Portal</span>
+                    </h1>
+                    <span flex></span>
+
+                    <md-button aria-label="More">
+                        <span>Welcome Kannan</span>
+                        <i class="fa fa-caret-down"></i>
+                    </md-button>
+
+                    <md-button class="md-icon-button" aria-label="Languages"> 
+                        <i class="fa fa-globe fa-lg"></i>
+                    </md-button>
+                </div>
+            </md-toolbar>
+        </header>
+
+        <div layout="column" ng-controller="BasicDemoCtrl as ctrl">
+            <md-toolbar id="ui-menu-bar" class="default-toolbar">
+                <div class="md-toolbar-tools md-whiteframe-2dp">
+				
+				
+                   
+
+                    <md-menu>
+                        <md-button aria-label="Actions" class="md-raised" ng-click="ctrl.openMenu($mdOpenMenu, $event)">
+                            <span>Actions</span>
+                            <i class="fa fa-caret-down"></i>
+                        </md-button>
+
+                        <md-menu-content width="3">
+                            <md-menu-item>
+                                <md-button ng-click="create()">
+                                    <span>Create Portal...</span>
+                                </md-button>
+                            </md-menu-item>
+
+                            <md-menu-item>
+                                <md-button  disabled="disabled">
+                                    <span>Delete Portal</span>
+                                </md-button>
+                            </md-menu-item>
+
+                            <md-menu-item>
+                                <md-button  disabled="disabled">
+                                    <span>Empty Portal</span>
+                                </md-button>
+                            </md-menu-item>
+
+                            <md-menu-divider></md-menu-divider>
+
+                            <md-menu-item>
+                                <md-button  disabled="disabled">
+                                    <span>Refresh</span>
+                                </md-button>
+                            </md-menu-item>
+
+                            <md-menu-divider></md-menu-divider>
+
+                            <md-menu-item>
+                                <md-button disabled="disabled" >
+                                    <span>Paste Into</span>
+                                </md-button>
+                            </md-menu-item>
+
+                            <md-menu-divider></md-menu-divider>
+
+                          
+	
+                            <md-menu-item>
+                                <md-button disabled="disabled" ng-click="ctrl.toggleNotifications()">
+                                    <span>Properties</span>
+                                </md-button>
+                            </md-menu-item>
+                        </md-menu-content>
+                    </md-menu><div style="width:10px;"></div>
+		<md-button class="md-raised" aria-label="None" ng-click="parse()">Parse</md-button>
+       
+     
+		  <textarea ng-model="query" column="800" rows="2" style="margin: 0px; width: 975px; height: 130px;" placeholder="Enter Query Here !"></textarea>
+  <textarea json-text  ng-model ="reponseData" column="800" rows="5" style="margin: 0px; width: 975px; height: 130px;" >
+  
+  
+  </div>
+ </textarea>
+       <span flex></span>
+	               
+
+                   <!-- <md-button class="md-raised" aria-label="None" ng-click="">None</md-button>
+                    <md-button class="md-raised" aria-label="Properties" ng-click="">Properties</md-button>
+                    
+                    <md-button class="md-icon-button md-primary" style="color: gray;" aria-label="Refresh" ng-click=""> 
+                        <i class="fa	 fa-refresh fa-lg"></i>
+                    </md-button>			-->
+                </div>
+            </md-toolbar>
+       
+
+      <div id="main-container">
+            <div id="breadcrumb-container" layout="column">
+                <ul class="breadcrumb md-body-2">
+                    <li><a href="#"></a><span>All Bockets ({{portal.length}})</span></li>
+                </ul>
+            </div>
+
+            <div id="ui-panes-container" layout="row">
+                <div id="list-container" ui-view flex="100">
+                    <md-content id="Portal-list" class="content"  layout-padding>
+					
+                        <div layout="column" layout-fill  layout-align="left" >
+                           
+                                    
+                                       <div  ng-click="isDiscrete=true" >
+									<img src="./img/discrete.jpg" ng-click="isDiscrete=true"/>
+									</div>
+									 <div  ng-click="isDiscrete=false">
+									<img src="./img/scattered.jpg" ng-click="isDiscrete=false"/>
+									</div>   
+									</div>
+									
+                    </md-content>
+                </div>
+
+            </div>
+			<div style="margin-left: 560px;">
+			<div id="content" style="border: 1px solid gray;">
+    
+    
+	 <div ng-repeat="por in portal" >
+                <div draggable style="height:40%;width:40%;border:1px solid gray;" ng-if="por.isDiscrete">                       
+										
+										
+                                  
+										<nvd3-stacked-area-chart
+    	data="por.data"
+       
+        showXAxis="true"
+        showYAxis="true"
+         width="550"
+        height="200"
+        showControls="true">
+		<svg></svg>
+    </nvd3-stacked-area-chart>
+	 
+	       
+	</div>
+	  <div draggable style="height:40%;width:40%;border:1px solid gray;" ng-if="!por.isDiscrete">                       
+										
+										
+                                  
+									 <nvd3-scatter-chart
+            data="por.data"
+            id="exampleId"
+            width="600"
+            height="300"
+            margin="{left:150,top:100,bottom:100,right:150}"
+            tooltips="true"
+            interactive="true"
+            
+           >
+        <svg></svg>
+    </nvd3-scatter-chart>
+	       
+	</div>
+          
+</div>
+</div>
+</div>
+	</div>		</html>
+    
+        <script src="js/index.js"></script>
+
+    
+    
+    
+  </body>
+</html>
