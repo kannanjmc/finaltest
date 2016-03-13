@@ -220,7 +220,7 @@ directive('myDraggable', function($document) {
 	
     .controller('BasicDemoCtrl', function DemoCtrl($scope, $mdDialog, portalService) {
 $scope.isDiscrete = false;
-$scope.query = "select Date_format(hire_date,'%Y') as year,gender,count(*) from employees group by Date_format(hire_date,'%Y'),gender";
+$scope.query = "select Date_format(hire_date,'%Y') as x,gender ,count(*) as y from employees group by  x,gender";
 $scope.fields = [];
 $scope.currentPortal = {};
 $scope.parse = function() {
