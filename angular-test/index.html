@@ -178,12 +178,14 @@
        
         showXAxis="true"
         showYAxis="true"
-         width="550"
-        height="200"
+         width="300"
+        height="100"
         showControls="true">
 		<svg></svg>
     </nvd3-stacked-area-chart>
-	 
+	   <md-button class="md-raised" aria-label="Properties" ng-click="delete($index,por)">Delete</md-button>
+										
+                  
 	       
 	</div>
 	  <div draggable style="height:40%;width:40%;border:1px solid gray;" ng-if="!por.isDiscrete">                       
@@ -202,7 +204,7 @@
            >
         <svg></svg>
     </nvd3-scatter-chart>
-	       
+	       <md-button class="md-raised" aria-label="Properties" ng-click="delete($index,por)">Delete</md-button>
 	</div>
           
 </div>
